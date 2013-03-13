@@ -244,7 +244,7 @@ class SiriProxy::Plugin::Vera < SiriProxy::Plugin
   # house summary
   listen_for (/(house summary|overall status|what's up|vera status)/i) {house_summary}
 
-  listen_for (/vera plugin version*/i) { say "vera plugin version "@version }
+  listen_for (/vera plugin version*/i) { say "vera plugin version #{@version}" }
   # silliness--open/close south garage_door
   listen_for (/Open the pod bay door.*/i) \
     { run_scene("toggle south","garage","Pod bay door opened Dave")}
