@@ -11,7 +11,7 @@ Installation
 Add the following code to your config.yml, substituting <YOUR_VERA_IP_ADDRESS> for the actual address.
 
     - name: 'Vera'
-      path: './plugins/siriproxy-vera'
+      path: 'git://github.com/zolakk/SiriProxy-Vera.git'
       action_url: 'http://<YOUR_VERA_IP_ADDRESS>:3480/data_request?id=lu_action&output_format=json'
       switch_light: '&serviceId=urn:upnp-org:serviceId:SwitchPower1&action=SetTarget&newTargetValue'
       set_level: '&serviceId=urn:upnp-org:serviceId:Dimming1&action=SetLoadLevelTarget&newLoadlevelTarget'
