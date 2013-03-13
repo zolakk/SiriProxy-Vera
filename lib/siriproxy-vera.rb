@@ -12,6 +12,7 @@ require 'json'
 
 class SiriProxy::Plugin::Vera < SiriProxy::Plugin
   def initialize(config = {})
+    @version = "0.10.9"
     @action_url = config["action_url"]
     @switch_light = config["switch_light"]
     @set_level = config["set_level"]
@@ -241,15 +242,16 @@ class SiriProxy::Plugin::Vera < SiriProxy::Plugin
   end
 
   # house summary
-  listen_for (/(house summary|overall status|what's up)/i) {house_summary}
+  listen_for (/(house summary|overall status|what's up|vera status)/i) {house_summary}
 
+  listen_for (/vera plugin version*/i) { say "vera plugin version "@version }
   # silliness--open/close south garage_door
   listen_for (/Open the pod bay door.*/i) \
     { run_scene("toggle south","garage","Pod bay door opened Dave")}
 
   # more silliness
   listen_for (/Open sesame.*/i) \
-    { run_scene("unlock door","front","your wish is granted")}
+    { run_scene("unlock door","front","your wish is my command")}
   # movie time
   listen_for (/movie time on.*/i) \
     { run_scene("movie time on","any","Dimmed lights for movies") }
