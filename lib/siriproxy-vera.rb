@@ -78,7 +78,7 @@ class SiriProxy::Plugin::Vera < SiriProxy::Plugin
         "locks"=>{"door lock"=>"50" },
         "sensors"=>{},
         "thermostats"=>{},
-        "scenes"=>{}
+        "scenes"=>{"unlock door"=>"71"}
       },
       "master"=>{
         "name"=>"master bedroom",
@@ -138,7 +138,7 @@ class SiriProxy::Plugin::Vera < SiriProxy::Plugin
         "locks"=>{ "front deadbolt"=>"50" },
         "sensors"=>{},
         "thermostats"=>{ "hallway"=>"74" },
-        "scenes"=>{ "lights out"=>"1", "movie time on"=>"37", "movie time off"=>"58" }
+        "scenes"=>{ "lights out"=>"1", "movie time on"=>"37", "movie time off"=>"58", "unlock door"=>71 }
       }
     }
     @current_room = "any"
@@ -247,6 +247,9 @@ class SiriProxy::Plugin::Vera < SiriProxy::Plugin
   listen_for (/Open the pod bay door.*/i) \
     { run_scene("toggle south","garage","Pod bay door opened Dave")}
 
+  # more silliness
+  listen_for (/Open sesame.*/i) \
+    { run_scene("unlock door","front","your wish is granted")}
   # movie time
   listen_for (/movie time on.*/i) \
     { run_scene("movie time on","any","Dimmed lights for movies") }
