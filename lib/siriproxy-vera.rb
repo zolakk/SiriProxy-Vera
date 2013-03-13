@@ -4,6 +4,8 @@ require 'pp'
 require 'httparty'
 require 'json'
 
+# This code originally written by rlmalisz on the MicasaVerde forum
+# 3-12-2013 - Minor modification made to change fan control over to FanLinc
 #######
 # Here goes nothing
 ######
